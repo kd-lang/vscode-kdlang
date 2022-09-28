@@ -1,0 +1,7 @@
+// SYNTAX TEST "source.kd" "hashtag"
+   #include <test>
+// ^^^^^^^^^^^^^^^ markup.bold.kd
+#define foo bar
+// ^^^^^^^^^^^^ markup.bold.kd
+#some javascript line
+// ^^^^^^^^^^^^^^^^^^ markup.bold.kd

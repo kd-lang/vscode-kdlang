@@ -1,0 +1,13 @@
+// SYNTAX TEST "source.kd" "numbers"
+_ := 1_000_000
+//   ^^^^^^^^^ constant.numeric.integer.kd
+_ := 3_122.55
+//   ^^^^^^^^ constant.numeric.float.kd
+_ := 3.14e11
+//   ^^^^^^^ constant.numeric.exponential.kd
+_ := 0xF_F
+//   ^^^^^ constant.numeric.hex.kd
+_ := 0o17_3
+//   ^^^^^^ constant.numeric.octal.kd
+_ := 0b0_11
+//   ^^^^^^ constant.numeric.binary.kd

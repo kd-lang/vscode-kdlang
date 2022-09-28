@@ -1,0 +1,5 @@
+// SYNTAX TEST "source.kd" "comparison"
+   0 == 0
+// ^ constant.numeric.integer.kd
+//   ^^ keyword.operator.relation.kd
+//      ^ constant.numeric.integer.kd

@@ -1,0 +1,3 @@
+// SYNTAX TEST "source.kd" "method accessor"
+hello.method()
+//    ^^^^^^ entity.name.function.kd

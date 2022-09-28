@@ -1,0 +1,14 @@
+// SYNTAX TEST "source.kd"
+    abc := ''
+//  ^^^ variable.other.assignment.kd
+mut abc := ''
+//  ^^^ variable.other.assignment.kd
+    abc = ''
+//  ^^^ variable.other.assignment.kd
+   abc, foo := '', ''
+// ^^^ variable.other.assignment.kd
+//    ^^ - variable.other.assignment.kd
+//      ^^^ variable.other.assignment.kd
+   variable2 := 2
+// ^^^^^^^^^ variable.other.assignment.kd
+//         ^ - constant.numeric.integer.kd

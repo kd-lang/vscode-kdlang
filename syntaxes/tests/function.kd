@@ -1,0 +1,20 @@
+// SYNTAX TEST "source.kd"
+   pub fn foo<T>()
+// ^^^ storage.modifier.kd
+//     ^^ keyword.fn.kd
+//        ^^^ entity.name.function.kd
+//            ^ entity.name.generic.kd
+   fn foo()
+// ^^ keyword.fn.kd
+//    ^^^ entity.name.function.kd
+   pub fn foo()
+// ^^^ storage.modifier.kd
+//     ^^ keyword.fn.kd
+//        ^^^ entity.name.function.kd
+   pub fn (test Blah) foo()
+// ^^^ storage.modifier.kd
+//     ^^ keyword.fn.kd
+//                    ^^^ entity.name.function.kd
+   fn C.foo()
+// ^^ keyword.fn.kd
+//      ^^^ entity.name.function.kd

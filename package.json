@@ -1,0 +1,236 @@
+{
+	"name": "vscode-kdlang",
+	"displayName": "Kd",
+	"description": "Kd language support (syntax highlighting, formatter, snippets) for Visual Studio Code.",
+	"publisher": "kdlanguage",
+	"icon": "icons/icon.png",
+	"version": "0.1.14",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.40.0"
+	},
+	"homepage": "https://kd-lang.github.io/",
+	"bugs": {
+		"url": "https://github.com/kdlang/vscode-kdlang/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kdlang/vscode-kdlang"
+	},
+	"scripts": {
+		"compile": "node ./scripts/build.js",
+		"compile-dev": "node ./scripts/build.js --watch",
+		"lint": "eslint .",
+		"lintmd": "markdownlint *.md -i CHANGELOG.md",
+		"vscode:prepublish": "node ./scripts/minify_json.js && NODE_ENV=production node ./scripts/build.js",
+		"watch": "tsc -watch -p ./",
+		"package": "vsce package",
+		"postpackage": "node ./scripts/minify_json.js --restore",
+		"testgrammar": "vscode-tmgrammar-test -s source.kd -g syntaxes/kd.tmLanguage.json -t \"syntaxes/tests/*.kd\""
+	},
+	"keywords": [
+		"Kd",
+		"kd",
+		"kd language",
+		"kdlang",
+		"extension",
+		"autocompletion"
+	],
+	"categories": [
+		"Snippets",
+		"Programming Languages"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "kd",
+				"path": "snippets/snippets.json"
+			}
+		],
+		"languages": [
+			{
+				"id": "kd",
+				"aliases": [
+					"Kd"
+				],
+				"extensions": [
+					".kd",
+					".dsh",
+					".dd",
+					"kd.mod"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "kd",
+				"scopeName": "source.kd",
+				"path": "./syntaxes/kd.tmLanguage.json"
+			}
+		],
+		"configuration": {
+			"title": "Kd",
+			"properties": {
+				"kd.kdls.debug": {
+					"scope": "resource",
+					"type": "boolean",
+					"description": "Enables / disables the language server's debug mode.\nSetting it to true will create a log file to your workspace folder for bug reports."
+				},
+				"kd.kdls.customVrootPath": {
+					"scope": "resource",
+					"type": "string",
+					"default": "",
+					"description": "Custom path to the Kd installation directory (KDROOT)."
+				},
+				"kd.kdls.customPath": {
+					"scope": "resource",
+					"type": "string",
+					"default": "",
+					"description": "Custom path to the KDLS (Kd Language Server) executable."
+				},
+				"kd.kdls.enable": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": false,
+					"description": "Enables the language server. (alpha)"
+				},
+				"kd.kdls.enableFeatures": {
+					"scope": "resource",
+					"type": "string",
+					"description": "Enables specific language server features. Multiple values must be separated with a comma (,)."
+				},
+				"kd.kdls.disableFeatures": {
+					"scope": "resource",
+					"type": "string",
+					"description": "Disables specific language server features. Multiple values must be separated with a comma (,)."
+				},
+				"kd.kdls.connectionMode": {
+					"scope": "resource",
+					"type": "string",
+					"default": "stdio",
+					"enum": [
+						"stdio",
+						"tcp"
+					],
+					"description": "Specify the mode to be used when connecting to KDLS.",
+					"enumDescriptions": [
+						"Connects to the language server via standard input/output. (Default)",
+						"Connects to the language server via TCP"
+					]
+				},
+				"kd.kdls.tcpMode.port": {
+					"scope": "resource",
+					"type": "number",
+					"default": 5007,
+					"description": "Port to be used when connecting to the language server. (Only in TCP mode)"
+				},
+				"kd.kdls.tcpMode.useRemoteServer": {
+					"scope": "resource",
+					"default": false,
+					"type": "boolean",
+					"description": "Connect to a remote server instead of launching a new local process. (Only in TCP mode)"
+				},
+				"kd.kdls.customArgs": {
+					"scope": "resource",
+					"type": "string",
+					"description": "Custom arguments to be passed to the KDLS executable."
+				}
+			}
+		},
+		"configurationDefaults": {
+			"[kd]": {
+				"editor.insertSpaces": false
+			}
+		},
+		"keybindings": [
+			{
+				"command": "kd.fmt",
+				"key": "ctrl+i ctrl+i"
+			}
+		],
+		"commands": [
+			{
+				"command": "kd.run",
+				"title": "Run current file",
+				"category": "Kd"
+			},
+			{
+				"command": "kd.fmt",
+				"title": "Format current file",
+				"category": "Kd"
+			},
+			{
+				"command": "kd.prod",
+				"title": "Build an optimized executable from current file",
+				"category": "Kd"
+			},
+			{
+				"command": "kd.ver",
+				"title": "Show Kd version",
+				"category": "Kd"
+			},
+			{
+				"command": "kd.kdls.update",
+				"title": "Update KDLS",
+				"category": "Kd"
+			},
+			{
+				"command": "kd.kdls.restart",
+				"title": "Restart KDLS",
+				"category": "Kd"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "kd.run",
+					"when": "editorLangId == kd"
+				},
+				{
+					"command": "kd.fmt",
+					"when": "editorLangId == kd"
+				},
+				{
+					"command": "kd.prod",
+					"when": "editorLangId == kd"
+				},
+				{
+					"command": "kd.kdls.restart",
+					"when": "editorLangId == kd && config.vkd.kdls.enable"
+				}
+			]
+		},
+		"breakpoints": [
+			{
+				"language": "kd"
+			}
+		]
+	},
+	"activationEvents": [
+		"workspaceContains:**/*.kd",
+		"onLanguage:kd",
+		"onCommand:kd.run",
+		"onCommand:kd.fmt",
+		"onCommand:kd.prod",
+		"onCommand:kd.ver",
+		"onCommand:kd.kdls.update",
+		"onCommand:kd.kdls.restart"
+	],
+	"main": "./out/extension.js",
+	"dependencies": {
+		"vscode-languageclient": "^7.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "12",
+		"@types/vscode": "1.40.0",
+		"@typescript-eslint/eslint-plugin": "^4.33",
+		"@typescript-eslint/parser": "^4.33",
+		"esbuild": "~0.14.39",
+		"eslint": "^7.32",
+		"markdownlint-cli": "^0.31.1",
+		"typescript": "^4.6.4",
+		"vsce": "^2.7.0",
+		"vscode-tmgrammar-test": "~0.0.11"
+	}
+}

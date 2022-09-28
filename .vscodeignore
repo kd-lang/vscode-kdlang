@@ -1,0 +1,14 @@
+.idea
+.vscode/**
+.vscode-test/**
+node_modules/
+src/
+images/
+
+**/tslint.json
+.gitignore
+.kd
+.go
+tsconfig.json
+package-lock.json
+scripts/

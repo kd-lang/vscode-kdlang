@@ -1,0 +1,21 @@
+// SYNTAX TEST "source.kd" "string"
+_ := 'test'
+//    ^^^^ string.quoted.kd
+a := 1
+_ := '$a'
+//    ^^ variable.other.interpolated.kd
+_ := '\\'
+//    ^^ constant.character.escape.kd
+_ := c'test'
+//   ^ storage.type.string.kd
+_ := `r`
+//   ^^^ string.quoted.rune.kd
+_ := r'\'
+//   ^ storage.type.string.kd
+//    ^^^ string.quoted.raw.kd
+_ := r"\"
+//   ^ storage.type.string.kd
+//    ^^^ string.quoted.raw.kd
+_ := r'$a'
+//     ^^ variable.other.interpolated.kd
+

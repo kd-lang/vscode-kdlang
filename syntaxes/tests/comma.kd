@@ -1,0 +1,5 @@
+// SYNTAX TEST "source.kd" "comma"
+ [1, 2, 3, 4]
+// ^ punctuation.separator.comma.kd
+//    ^ punctuation.separator.comma.kd
+//       ^ punctuation.separator.comma.kd

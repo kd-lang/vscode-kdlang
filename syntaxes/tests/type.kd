@@ -1,0 +1,5 @@
+// SYNTAX TEST "source.kd"
+struct Foo {}
+//     ^^^ entity.name.type.kd
+type Foo = int
+//   ^^^ entity.name.type.kd

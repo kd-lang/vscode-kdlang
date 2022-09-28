@@ -1,0 +1,12 @@
+// SYNTAX TEST "source.kd"
+   pubfn
+// ^^^ - storage.modifier.kd
+//    ^^ - keyword.fn.kd
+
+   pub fn
+// ^^^ storage.modifier.kd
+//     ^^ keyword.fn.kd
+
+pub fn
+   // test
+// ^^ comment.line.double-slash.kd
