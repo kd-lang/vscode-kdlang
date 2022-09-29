@@ -77,7 +77,7 @@
 					"type": "boolean",
 					"description": "Enables / disables the language server's debug mode.\nSetting it to true will create a log file to your workspace folder for bug reports."
 				},
-				"kd.kdls.customVrootPath": {
+				"kd.kdls.customKdrootPath": {
 					"scope": "resource",
 					"type": "string",
 					"default": "",
@@ -197,7 +197,7 @@
 				},
 				{
 					"command": "kd.kdls.restart",
-					"when": "editorLangId == kd && config.vkd.kdls.enable"
+					"when": "editorLangId == kd && config.kd.kdls.enable"
 				}
 			]
 		},
